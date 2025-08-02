@@ -24,7 +24,7 @@ def get_boost_libraries():
         "boost_python",
     ]
 
-    conda_prefix = os.environ.get("CONDA_PREFIX")
+    conda_prefix = os.environ.get("CONDA_PREFIX") or os.environ.get("PREFIX") 
     if conda_prefix:
         libdir = os.path.join(conda_prefix, "lib")
         for name in candidates:
@@ -46,7 +46,7 @@ def get_boost_config():
         inc = Path(boost_path) / "include"
         lib = Path(boost_path) / "lib"
     else:
-        conda_prefix = os.environ.get("CONDA_PREFIX")
+        conda_prefix = os.environ.get("CONDA_PREFIX") or os.environ.get("PREFIX") 
         if not conda_prefix:
             raise EnvironmentError(
                 "Neither BOOST_PATH nor CONDA_PREFIX are set. "
@@ -62,7 +62,7 @@ def get_boost_config():
 
 
 def get_objcryst_libraries():
-    conda_prefix = os.environ.get("CONDA_PREFIX")
+    conda_prefix = os.environ.get("CONDA_PREFIX") or os.environ.get("PREFIX") 
     if not conda_prefix:
         raise EnvironmentError(
             "CONDA_PREFIX is not set. "
