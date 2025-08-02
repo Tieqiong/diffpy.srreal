@@ -26,6 +26,7 @@ try:
     __version__ = version("diffpy.srreal")
 except PackageNotFoundError:
     __version__ = FALLBACK_VERSION
-
+else:
+    __version__ = __version__ if __version__ != "0.0.0" else FALLBACK_VERSION
 
 # End of file
